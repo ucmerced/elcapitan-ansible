@@ -24,10 +24,14 @@
     yum:
       state: latest
       name: '*'
-  - name: ensure htop is at the latest version
+  - name: ensure htop,ipmitool,dnsmasq,vsftpd...are present and at the latest version
     yum:
-      name: htop
+      name: htop,ipmitool,dnsmasq,vsftpd
       state: latest
+  - name: Make sure vsftpd is off ... not PXE booting for now.
+    systemd:
+      name: vsftpd
+      state: stopped
   - name: Add Matthias account as a sudoers.
     user:
       update_password: on_create
