@@ -1,0 +1,38 @@
+- hosts: all
+  order: sorted
+  tasks:
+  - name: ensure a list of packages are not installed
+    yum:
+      name: "{{ packages }}"
+      state: absent
+    vars:
+      packages:
+      - yelp
+      - yelp-libs
+      - yelp-xls
+      - dnf
+  - name: ensure epel is installed
+    yum:
+      state: latest
+      name: 'epel-release'
+  - name: ensure security is latest
+    yum:
+      security: yes
+      state: latest
+      name: '*'
+  - name: ensure all packages are up-to-date
+    yum:
+      state: latest
+      name: '*'
+  - name: ensure htop is at the latest version
+    yum:
+      name: htop
+      state: latest
+  - name: Add Matthias account as a sudoers.
+    user:
+      update_password: on_create
+      name: mbussonnier
+      comment: Matthias Bussonnier
+      uid: 1001
+      password: $6$c6QlFGDbfQoQ/WPm$WmBLKGSZ4poAwJQQqyyNMTO0tiTaFzprgLQouPUq2yVe6V27XItZLnvv9qd1FJ7/EHm4cPCqzwyP3qLothao90
+      groups: wheel
