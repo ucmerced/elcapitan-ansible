@@ -32,6 +32,10 @@
     systemd:
       name: vsftpd
       state: stopped
+  - name: setup slurm
+    yum:
+      state: present
+      name: munge
   - name: Add Matthias account as a sudoers.
     user:
       update_password: on_create
