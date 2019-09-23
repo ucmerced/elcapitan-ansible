@@ -1,4 +1,4 @@
-- hosts: all
+- hosts: elacpitan_head
   order: sorted
   tasks:
   - name: ensure a list of packages are not installed
@@ -26,12 +26,20 @@
       name: '*'
   - name: ensure htop,ipmitool,dnsmasq,vsftpd...are present and at the latest version
     yum:
-      name: htop,ipmitool,dnsmasq,vsftpd
+      name: htop,ipmitool,dnsmasq,vsftpd,nfs-utils
       state: latest
   - name: Make sure vsftpd is off ... not PXE booting for now.
     systemd:
       name: vsftpd
       state: stopped
+  - name: Ensure fstab can mount coraid
+    mount:
+        path: /home
+        src: 192.168.0.70:/mnt/md0
+        fstype: nfs
+        opts: defaults,rw,noatime
+        state: mounted
+        boot: yes
   - name: setup slurm
     yum:
       state: present
