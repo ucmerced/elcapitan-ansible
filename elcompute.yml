@@ -35,6 +35,10 @@
         opts: defaults,rw,noatime
         state: mounted
         boot: yes
+  - name: copy slurm instal rpm
+    copy:
+      src: /root/rpmbuild/
+      dest: /root/rpmbuild/
   - name: setup slurmd
     yum:
       state: present
