@@ -54,6 +54,10 @@
     yum:
       state: present
       name: munge, slurm-slurmd
+  - name: copy munge key for compute nodes to recognize the head node controller and vice versa
+    copy:
+      src: /etc/munge/munge.key
+      dest: /etc/munge/munge.key
   - name: Add Matthias account as a sudoers.
     user:
       update_password: on_create
