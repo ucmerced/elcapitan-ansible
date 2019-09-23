@@ -43,6 +43,12 @@
     copy:
       src: /root/rpmbuild/SRPMS
       dest: /root/rpmbuild/SRPMS
+  - name: Check if slurm.rpm is installed
+      command: rpm -q slurm 
+      register: slurm_check
+  - name: Install slurm RPM if slurm is not installed
+      command: yum install /root/rpmbuild/RPMS/RPMS/x86_64/slurm-slurmd-19.05.2-1.el7.x86_64.rpm /root/rpmbuild/RPMS/RPMS/x86_64/slurm-19.05.2-1.el7.x86_64.rpm
+      when: slurm_check.rc == 1
   - name: setup slurmd
     yum:
       state: present
