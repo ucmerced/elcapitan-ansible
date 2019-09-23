@@ -45,6 +45,7 @@
       dest: /root/rpmbuild/SRPMS
   - name: Check if slurm.rpm is installed
     command: rpm -q slurm 
+    failed_when: no
     ignore_errors: True
     register: slurm_check
   - name: Install slurm RPM if slurm is not installed
