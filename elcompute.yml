@@ -54,7 +54,7 @@
   - name: setup slurmd
     yum:
       state: present
-      name: munge, slurmd
+      name: munge, slurm-slurmd
   - name: Add Matthias account as a sudoers.
     user:
       update_password: on_create
