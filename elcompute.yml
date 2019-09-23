@@ -10,7 +10,6 @@
       - yelp
       - yelp-libs
       - yelp-xls
-      - dnf
   - name: ensure epel is installed
     yum:
       state: latest
@@ -21,7 +20,7 @@
       name: '*'
   - name: ensure necessary software are installed
     yum:
-      name: ipmitool,nfs-utils
+      name: ipmitool,nfs-utils,dnf
       state: latest
   - name: ensure convenient software are installed
     yum:
