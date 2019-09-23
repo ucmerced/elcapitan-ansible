@@ -1,0 +1,49 @@
+- hosts: elcapitan_compute
+  order: sorted
+  tasks:
+  - name: ensure a list of packages are not installed
+    yum:
+      name: "{{ packages }}"
+      state: absent
+    vars:
+      packages:
+      - yelp
+      - yelp-libs
+      - yelp-xls
+      - dnf
+  - name: ensure epel is installed
+    yum:
+      state: latest
+      name: 'epel-release'
+  - name: ensure all packages are up-to-date
+    yum:
+      state: latest
+      name: '*'
+  - name: ensure necessary software are installed
+    yum:
+      name: ipmitool,nfs-utils
+      state: latest
+  - name: ensure convenient software are installed
+    yum:
+      name: htop,wget,tree
+      state: latest
+  - name: Ensure fstab can mount coraid, and is mounted
+    mount:
+        path: /home
+        src: 192.168.0.70:/mnt/md0
+        fstype: nfs
+        opts: defaults,rw,noatime
+        state: mounted
+        boot: yes
+  - name: setup slurmd
+    yum:
+      state: present
+      name: munge, slurmd
+  - name: Add Matthias account as a sudoers.
+    user:
+      update_password: on_create
+      name: mbussonnier
+      comment: Matthias Bussonnier
+      uid: 1001
+      password: $6$c6QlFGDbfQoQ/WPm$WmBLKGSZ4poAwJQQqyyNMTO0tiTaFzprgLQouPUq2yVe6V27XItZLnvv9qd1FJ7/EHm4cPCqzwyP3qLothao90
+      groups: wheel
