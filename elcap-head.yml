@@ -15,24 +15,23 @@
     yum:
       state: latest
       name: 'epel-release'
-  - name: ensure security is latest
-    yum:
-      security: yes
-      state: latest
-      name: '*'
   - name: ensure all packages are up-to-date
     yum:
       state: latest
       name: '*'
-  - name: ensure htop,ipmitool,dnsmasq,vsftpd...are present and at the latest version
+  - name: ensure necessary software are installed
     yum:
-      name: htop,ipmitool,dnsmasq,vsftpd,nfs-utils
+      name: ipmitool,dnsmasq,vsftpd,nfs-utils,ansible,mariadb-server,mariadb-devel,rng-tools
+      state: latest
+  - name: ensure convenient software are installed
+    yum:
+      name: htop,wget,tree
       state: latest
   - name: Make sure vsftpd is off ... not PXE booting for now.
     systemd:
       name: vsftpd
       state: stopped
-  - name: Ensure fstab can mount coraid
+  - name: Ensure fstab can mount coraid, and is mounted
     mount:
         path: /home
         src: 192.168.0.70:/mnt/md0
@@ -43,7 +42,7 @@
   - name: setup slurm
     yum:
       state: present
-      name: munge
+      name: munge, slurm
   - name: Add Matthias account as a sudoers.
     user:
       update_password: on_create

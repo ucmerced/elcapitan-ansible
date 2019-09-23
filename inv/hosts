@@ -2,11 +2,7 @@
 elcapitan3a
 
 [elcapitan_compute]
-c[1:10]
-
-[elcapitan_compute:vars]
-ansible_ssh_common_args='-oStrictHostKeyChecking=no -o ProxyCommand="ssh -W %h:%p -q root@elcapitan3a.ucmerced.edu"'
-ansible_user=root
+c[11:20]
 
 [mons]
 c1
