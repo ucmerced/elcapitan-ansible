@@ -51,6 +51,11 @@
     synchronize:
       src: /etc/munge/munge.key
       dest: /etc/munge/munge.key
+  - name: Add a line to a file if the file does not exist, without passing regexp
+    lineinfile:
+      path: /etc/hosts
+      line: 192.168.0.237 elcapitan3a
+      state: present
   - name: Create the slurm conf directory
     file:
       path: /etc/slurm
