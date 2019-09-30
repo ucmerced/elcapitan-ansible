@@ -47,9 +47,14 @@
       state: present
       name: munge, slurm-slurmd
   - name: copy munge key for compute nodes to recognize the head node controller and vice versa
-    copy:
+    synchronize:
       src: /etc/munge/munge.key
       dest: /etc/munge/munge.key
+    delegate_to: elcapitan3a
+  - name: copy slurm conf
+    copy:
+      src: etc/slurm/slurm.conf
+      dest: /etc/slurm/slurm.conf
   - name: Add Matthias account as a sudoers.
     user:
       update_password: on_create
