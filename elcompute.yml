@@ -50,7 +50,6 @@
     synchronize:
       src: /etc/munge/munge.key
       dest: /etc/munge/munge.key
-    delegate_to: elcapitan3a
   - name: copy slurm conf
     copy:
       src: etc/slurm/slurm.conf
