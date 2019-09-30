@@ -76,7 +76,7 @@
       name: munge
   - name: Make sure slurmd is started for job submission
     systemd:
-      state: started
+      state: restarted
       enabled : yes
       name: munge
   - name: Add Matthias account as a sudoers.
