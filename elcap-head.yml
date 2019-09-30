@@ -53,6 +53,19 @@
     yum:
       state: present
       name: munge, slurm
+  - name: Create the slurm conf directory
+    file:
+      path: /etc/slurm
+      owner: root
+      group: root
+      mode: '666'
+      state: directory
+  - name: copy slurm conf
+    copy:
+      src: etc/slurm/slurm.conf
+      dest: /etc/slurm/slurm.conf
+      owner: root
+      group: root
   - name: Add Matthias account as a sudoers.
     user:
       update_password: on_create
