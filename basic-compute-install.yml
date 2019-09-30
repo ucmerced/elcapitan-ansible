@@ -30,6 +30,10 @@
   - name: Ensure fstab can mount coraid, and is mounted
     mount:
         path: /home
+        state: unmounted
+  - name: Ensure fstab can mount coraid, and is mounted
+    mount:
+        path: /home
         src: 192.168.0.70:/mnt/md0
         fstype: nfs
         opts: defaults,rw,noatime
