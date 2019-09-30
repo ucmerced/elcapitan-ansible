@@ -78,7 +78,7 @@
     systemd:
       state: restarted
       enabled : yes
-      name: munge
+      name: slurmd
   - name: Add Matthias account as a sudoers.
     user:
       update_password: on_create
