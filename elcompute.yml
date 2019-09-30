@@ -51,7 +51,7 @@
     synchronize:
       src: /etc/munge/munge.key
       dest: /etc/munge/munge.key
-  - name: Create an insecure file
+  - name: Create the slurm conf directory
     file:
       path: /etc/slurm
       owner: root
