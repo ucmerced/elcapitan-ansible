@@ -35,6 +35,12 @@
         opts: defaults,rw,noatime
         state: mounted
         boot: yes
+  - name: Ennsure rpms build dir exists for later copy:
+    file:
+        state: directory
+        path: /root/rpmbuild/RPMS
+        owner: root
+        group: root
   - name: copy slurm install rpms
     synchronize:
       src: /root/rpmbuild/RPMS
