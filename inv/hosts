@@ -2,7 +2,7 @@
 elcapitan3a
 
 [elcapitan_compute]
-c[11:20]
+c[11:20] ansible_host=elcapitan3a
 
 [mons]
 c1
