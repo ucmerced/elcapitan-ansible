@@ -10,7 +10,6 @@
       - yelp
       - yelp-libs
       - yelp-xls
-      - dnf
   - name: ensure epel is installed
     yum:
       state: latest
@@ -21,11 +20,11 @@
       name: '*'
   - name: ensure necessary software are installed
     yum:
-      name: ipmitool,dnsmasq,vsftpd,nfs-utils,ansible,mariadb-server,mariadb-devel,rng-tools
+      name: ipmitool,dnsmasq,vsftpd,nfs-utils,ansible,mariadb-server,mariadb-devel,rng-tools,fail2ban
       state: latest
   - name: ensure convenient software are installed
     yum:
-      name: htop,wget,tree
+      name: htop,wget,tree,vim
       state: latest
   - name: Make sure vsftpd is off ... not PXE booting for now.
     systemd:
@@ -39,6 +38,17 @@
         opts: defaults,rw,noatime
         state: mounted
         boot: yes
+  - name: Copy file with owner and permissions
+    copy:
+      src: etc/fail2ban/jail.local
+      dest: /etc/fail2ban/jail.local
+      owner: root
+      group: root
+      mode: '0600'
+  - name: Make sure a service is running
+    systemd:
+      state: restarted
+      name: fail2ban
   - name: setup slurm
     yum:
       state: present
