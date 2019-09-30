@@ -1,5 +1,6 @@
 - hosts: elcapitan_compute
   order: sorted
+  strategy: free
   tasks:
   - name: ensure a list of packages are not installed
     yum:
@@ -50,10 +51,19 @@
     synchronize:
       src: /etc/munge/munge.key
       dest: /etc/munge/munge.key
+  - name: Create an insecure file
+    file:
+      path: /work
+      owner: root
+      group: root
+      mode: '666'
+      state: directory
   - name: copy slurm conf
     copy:
       src: etc/slurm/slurm.conf
       dest: /etc/slurm/slurm.conf
+      owner: root
+      group: root
   - name: Add Matthias account as a sudoers.
     user:
       update_password: on_create
