@@ -35,7 +35,7 @@
         opts: defaults,rw,noatime
         state: mounted
         boot: yes
-  - name: Ennsure rpms build dir exists for later copy:
+  - name: Ennsure rpms build dir exists for later copy
     file:
         state: directory
         path: /root/rpmbuild/RPMS
