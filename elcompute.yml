@@ -53,7 +53,7 @@
       dest: /etc/munge/munge.key
   - name: Create an insecure file
     file:
-      path: /work
+      path: /etc/slurm
       owner: root
       group: root
       mode: '666'
