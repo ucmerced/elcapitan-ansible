@@ -34,16 +34,6 @@
         opts: defaults,rw,noatime
         state: mounted
         boot: yes
-  - name: copy slurm install rpms
-    synchronize:
-      src: /root/rpmbuild/RPMS
-      dest: /root/rpmbuild/RPMS
-    delegate_to: elcapitan3a
-  - name: copy slurm install srpms
-    synchronize:
-      src: /root/rpmbuild/SRPMS
-      dest: /root/rpmbuild/SRPMS
-    delegate_to: elcapitan3a    
   - name: Check if slurm.rpm is installed
     command: rpm -q slurm 
     failed_when: no
