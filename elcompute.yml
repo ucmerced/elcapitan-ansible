@@ -2,10 +2,10 @@
   order: sorted
   strategy: free
   tasks:
-  - name: Enable SELinux
+  - name: Disable SELinux
     selinux:
       policy: targeted
-      state: enforcing
+      state: disabled
   - name: copy slurm conf
     copy:
       src: etc/slurm/slurm.conf
