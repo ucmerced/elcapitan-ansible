@@ -20,7 +20,7 @@
       name: '*'
   - name: ensure necessary software are installed
     yum:
-      name: ipmitool,dnsmasq,vsftpd,nfs-utils,ansible,mariadb-server,mariadb-devel,rng-tools,fail2ban
+      name: ipmitool,dnsmasq,vsftpd,nfs-utils,ansible,mariadb-server,mariadb-devel,rng-tools,fail2ban,rpm-build 
       state: latest
   - name: ensure convenient software are installed
     yum:

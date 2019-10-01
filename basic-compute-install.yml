@@ -21,7 +21,7 @@
       name: '*'
   - name: ensure necessary software are installed
     yum:
-      name: ipmitool,nfs-utils,dnf
+      name: ipmitool,nfs-utils,dnf,rsync
       state: latest
   - name: ensure convenient software are installed
     yum:
