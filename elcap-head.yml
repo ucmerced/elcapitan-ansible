@@ -75,7 +75,7 @@
       password: $6$c6QlFGDbfQoQ/WPm$WmBLKGSZ4poAwJQQqyyNMTO0tiTaFzprgLQouPUq2yVe6V27XItZLnvv9qd1FJ7/EHm4cPCqzwyP3qLothao90
       groups: wheel
   - openssh_keypair:
-      path: /home/mbussonnier/.ssh/id_ssh_rsa
+      path: /home/mbussonnier/.ssh/id_rsa
       owner: mbussonnier
       group: mbussonnier
       size: 2048
