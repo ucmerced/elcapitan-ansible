@@ -30,4 +30,4 @@
     authorized_key:
       user: mbussonnier
       state: present
-      key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/id_ssh_rsa.pub') }}"
+      key: "{{ lookup('file', '/home/mbussonnier/.ssh/id_ssh_rsa.pub') }}"
