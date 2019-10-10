@@ -25,7 +25,7 @@
       state: latest
   - name: ensure convenient software are installed
     yum:
-      name: htop,wget,tree
+      name: htop,wget,tree,dnf
       state: latest
   - name: Ensure fstab can mount coraid, and is mounted
     mount:

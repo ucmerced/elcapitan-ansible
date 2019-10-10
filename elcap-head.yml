@@ -29,7 +29,7 @@
       state: latest
   - name: ensure convenient software are installed
     yum:
-      name: htop,wget,tree,vim
+      name: htop,wget,tree,vim,dnf
       state: latest
   - name: Make sure vsftpd is off ... not PXE booting for now.
     systemd:
