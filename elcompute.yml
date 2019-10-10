@@ -1,6 +1,12 @@
 - hosts: elcapitan_compute
   order: sorted
   strategy: free
+  vars:
+    users:
+      - name: "aparopkari"
+        groups: "wheel"
+        uid: 1005
+
   tasks:
   - name: Disable SELinux
     selinux:
@@ -35,3 +41,11 @@
       user: mbussonnier
       state: present
       key: "{{ lookup('file', '/home/mbussonnier/.ssh/id_rsa.pub') }}"
+  - name: Create users accounts.
+    user:
+      update_password: on_create
+      name: "{{item['name']}}"
+      comment: "The comments"
+      uid: "{{item['uid']}}"
+      groups: "{{item['groups']}}"
+    loop: "{{users}}"

@@ -1,5 +1,10 @@
 - hosts: elacpitan_head
   order: sorted
+  vars:
+    users:
+      - name: "aparopkari"
+        groups: "wheel"
+        uid: 1005
   tasks:
   - name: ensure a list of packages are not installed
     yum:
@@ -79,3 +84,11 @@
       owner: mbussonnier
       group: mbussonnier
       size: 2048
+  - name: Create users accounts.
+    user:
+      update_password: on_create
+      name: "{{item['name']}}"
+      comment: "The comments"
+      uid: "{{item['uid']}}"
+      groups: "{{item['groups']}}"
+    loop: "{{users}}"
