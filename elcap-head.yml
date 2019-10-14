@@ -63,7 +63,7 @@
       path: /etc/slurm
       owner: root
       group: root
-      mode: '666'
+      mode: '644'
       state: directory
   - name: copy slurm conf
     copy:
@@ -71,6 +71,12 @@
       dest: /etc/slurm/slurm.conf
       owner: root
       group: root
+  - name: Create a JupyterHub user to host the JupyterHub environment
+    user:
+      update_password: on_create
+      name: jupyterhub
+      comment: Jupyter Hub User
+      uid: 800
   - name: Add Matthias account as a sudoers.
     user:
       update_password: on_create
