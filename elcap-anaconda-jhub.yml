@@ -1,0 +1,22 @@
+- hosts: elacpitan_head
+  order: sorted
+  become: true
+  become_user: jupyterhub
+  tasks:
+    - name: check for installation of Anaconda
+      stat:
+        path: '/home/jupyterhub/bin/conda'
+      changed_when: false
+      register: anaconda_conda_binary
+    - when: not anaconda_conda_binary.stat.exists
+      block:
+        - name: download installer...
+          become: yes
+          become_user: root
+          get_url:
+            url: https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+            dest: /home/jupyterhub/miniconda.sh
+            mode: 0755
+    
+        - name: install...
+          command: bash /home/jupyterhub/miniconda.sh -b 
