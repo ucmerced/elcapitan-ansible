@@ -4,7 +4,7 @@
     users:
       - name: "mlen2"
         uid: 623
-        groups: 'mlen2'
+        groups: 'wheel'
       - name: "aparopkari"
         groups: "wheel"
         uid: 1005
