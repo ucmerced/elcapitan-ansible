@@ -5,7 +5,6 @@
     users:
       - name: "mlen2"
         uid: 623
-    users:
       - name: "aparopkari"
         groups: "wheel"
         uid: 1005
