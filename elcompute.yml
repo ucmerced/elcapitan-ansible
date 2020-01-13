@@ -15,6 +15,14 @@
     selinux:
       policy: targeted
       state: disabled
+  - name: Create the slurm conf directory
+    file:
+      path: /etc/slurm
+      owner: root
+      group: root
+      mode: o=rx
+      state: directory
+      mode: o=rx
   - name: copy slurm conf
     copy:
       src: etc/slurm/slurm.conf
