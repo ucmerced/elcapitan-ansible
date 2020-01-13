@@ -2,6 +2,8 @@
   order: sorted
   vars:
     users:
+      - name: "mlen2"
+        uid: 623
       - name: "aparopkari"
         groups: "wheel"
         uid: 1005
