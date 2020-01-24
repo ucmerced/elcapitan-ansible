@@ -3,6 +3,9 @@
   strategy: free
   vars:
     users:
+      - name: 'glogashenko2'
+        uid: 1010
+        groups : "wheel"
       - name: "mlen2"
         uid: 623
         groups: 'wheel'
