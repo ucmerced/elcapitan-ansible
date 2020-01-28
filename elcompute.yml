@@ -4,7 +4,7 @@
   vars:
     users:
       - name: 'glogashenko'
-        uid: 1010
+        uid: 1011
         groups : "wheel"
       - name: "mlen2"
         uid: 623
