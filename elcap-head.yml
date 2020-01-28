@@ -2,7 +2,7 @@
   order: sorted
   vars:
     users:
-      - name: 'glogashenko2'
+      - name: 'glogashenko'
         uid: 1010
         groups : "wheel"
       - name: "mlen2"
