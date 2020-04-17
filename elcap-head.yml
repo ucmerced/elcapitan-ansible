@@ -11,6 +11,12 @@
       - name: "aparopkari"
         groups: "wheel"
         uid: 1005
+      - name: "jsonstro"
+        groups: "wheel"
+        uid: 1012
+      - name: "jweekley"
+        groups: "wheel"
+        uid: 1013
   tasks:
   - name: ensure a list of packages are not installed
     yum:
